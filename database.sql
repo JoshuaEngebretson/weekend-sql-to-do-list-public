@@ -6,7 +6,8 @@ CREATE TABLE "to_do_list" (
 	"task_note" VARCHAR (250) NOT NULL,
 	"assigned_to" VARCHAR (100) NOT NULL,
 	"created" DATE NOT NULL DEFAULT CURRENT_DATE,
-	"completed" DATE DEFAULT NULL
+  "completed" BOOLEAN DEFAULT FALSE,
+	"completed_date" DATE DEFAULT NULL
 );
 
 -- 3. If you want some placeholder information to start off
@@ -24,7 +25,7 @@ INSERT INTO "to_do_list"
 	('Water the plants', 'Brooke', '04-01-2023');
 
 INSERT INTO "to_do_list" 
-	("task_note", "assigned_to", "created", "completed") 
+	("task_note", "assigned_to", "created", "completed", "completed_date") 
   VALUES 
-	('Do the dishes', 'Steven', '04-10-2023', '04-11-2023'),
-  ('Vacuum the livingroom', 'Joshua', '04-08-2023', '04-09-2023');
+	('Do the dishes', 'Steven', '04-10-2023', true, '04-11-2023'),
+  ('Vacuum the livingroom', 'Joshua', '04-08-2023', true, '04-09-2023');

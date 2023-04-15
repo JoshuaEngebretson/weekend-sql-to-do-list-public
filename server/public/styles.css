@@ -31,3 +31,8 @@ tbody tr:nth-child(odd).completedTask {
 tbody tr:nth-child(even).completedTask {
   background-color: rgb(186, 209, 186);
 }
+
+#numberTasksCompleted {
+  font-size: larger;
+  font-weight: bold;
+}

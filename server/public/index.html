@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List by Joshua</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./vendors/jquery-3.3.1.min.js"></script>
+  <script src="./scripts/client.js"></script>
+</head>
+<body>
+  <header>
+    <h1>To-Do List</h1>
+    <p>✨ Tasks Completed: <span id="numberTasksCompleted">15</span> ✨</p>
+  </header>
+  
+  <main>
+    <form >
+      <p>
+        <label for="taskInput">Enter Task</label>
+        <input id="taskInput" type="text" placeholder="Required">
+        <label for="assignedToInput">Assigned To</label>
+        <input id="assignedToInput" type="text" placeholder="Required">
+      </p>
+      <label for="taskNoteInput">Task Note</label>
+      <input id="taskNoteInput" type="text" placeholder="Optional">
+      <button id="addTaskBtn">Add Task</button>
+    </form>
+
+    <div>
+      <h2>Task List</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Task</th>
+            <th>Task Note</th>
+            <th>Assigned To</th>
+            <th>Created</th>
+            <th>Completed Date</th>
+          </tr>
+        </thead>
+        <tbody id="viewToDoList">
+          <!-- To-Do list items go here -->
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+
+  <footer>
+
+  </footer>
+</body>
+</html>

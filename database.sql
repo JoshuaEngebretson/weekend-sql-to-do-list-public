@@ -3,7 +3,8 @@
 -- 2. Use the following lines of code to set up the table
 CREATE TABLE "to_do_list" (
 	"id" SERIAL PRIMARY KEY,
-	"task_note" VARCHAR (250) NOT NULL,
+	"task" VARCHAR (100) NOT NULL,
+	"task_note" VARCHAR (250),
 	"assigned_to" VARCHAR (100) NOT NULL,
 	"created" DATE NOT NULL DEFAULT CURRENT_DATE,
   "completed" BOOLEAN DEFAULT FALSE,
@@ -13,19 +14,21 @@ CREATE TABLE "to_do_list" (
 -- 3. If you want some placeholder information to start off
 --    enter the following into your SQL Query
 INSERT INTO "to_do_list" 
-	("task_note", "assigned_to") 
+	("task", "assigned_to") 
   VALUES 
 	('Mow lawn', 'Joshua'),
-	('Take out garbage', 'Joshua'),
-	('Walk the dog', 'Brooke');
+	('Take out garbage', 'Joshua');
+
 
 INSERT INTO "to_do_list" 
-	("task_note", "assigned_to", "created") 
+	("task", "task_note", "assigned_to", "created") 
   VALUES 
-	('Water the plants', 'Brooke', '04-01-2023');
+	('Water the plants', 'Water all, 3 ice cubes for the orchid', 'Brooke', '04-01-2023'),
+	('Vacuum', 'Livingroom and Office', 'Joshua', '04-12-2023');
+
 
 INSERT INTO "to_do_list" 
-	("task_note", "assigned_to", "created", "completed", "completed_date") 
+	("task", "task_note", "assigned_to", "created", "completed", "completed_date") 
   VALUES 
-	('Do the dishes', 'Steven', '04-10-2023', true, '04-11-2023'),
-  ('Vacuum the livingroom', 'Joshua', '04-08-2023', true, '04-09-2023');
+	('Do the dishes', 'Blender and knives by hand, everything else dishwasher', 'Steven', '04-10-2023', true, '04-11-2023'),
+	('Walk the dog', 'Afternoon walk', 'Brooke', '04-08-2023', true, '04-08-2023');

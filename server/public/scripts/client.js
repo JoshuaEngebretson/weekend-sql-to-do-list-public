@@ -69,22 +69,33 @@ function getAndRenderTaskList() {
 }// End getAndRenderTaskList
 
 
+// Handle click event on addTaskBtn
+//  1. Check if required fields are filled
+//      if not filled, alert user
+//  2. Call on postTask to send newTask 
+//      to the database
+//        1. Will update DOM if successful
+//            then clear inputs
+//        2. Will alert user if unsuccessful
+//            leave inputs filled in
 function addTask(event) {
   event.preventDefault();
 
   let task = $('#taskInput').val();
   let taskNote = $('#taskNoteInput').val();
-  let assignedTo = $('#assignedToInput').val()
+  let assignedTo = $('#assignedToInput').val();
 
   if (task != '' && assignedTo != '') {
-    console.log('this will work');
-
+    // Create newTask object to send to DB
     let newTask = {
       task: task,
       taskNote: taskNote,
       assignedTo: assignedTo
-    }
-    console.log(newTask);
+    };
+
+    // POST request to Server if successful
+    //  will empty out input fields
+    postTask(newTask);
   }
   else {// Alert the User why addTaskBtn didn't work
     // If nothing in Enter Task but Assigned To filled in
@@ -100,4 +111,36 @@ function addTask(event) {
       alert('Both "Enter Task" AND "Assigned To" are required fields');
     }
   }
+}
+
+
+// POST request to Server 
+//  if successful
+//    1. Will empty out input fields
+//    2. Clear out input fields
+//  if unsuccessful
+//    1. Alert user that an error has occured
+function postTask(taskToSend) {
+
+  console.log('taskToSend:', taskToSend);
+  // ajax POST of data to server
+  $.ajax({
+    method: 'POST',
+    url: '/toDo',
+    data: taskToSend
+  }).then(function (response){
+
+    console.log(response);
+    getAndRenderTaskList();
+    // Empty out input fields
+    $('#taskInput').val('');
+    $('#taskNoteInput').val('');
+    $('#assignedToInput').val('');
+
+  }).catch(function (error) {
+
+    alert('There was an error adding this task, please try again later')
+    console.log('the /toDo POST request failed with error:', error);
+
+  });
 }

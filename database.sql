@@ -4,12 +4,13 @@
 CREATE TABLE "to_do_list" (
 	"id" SERIAL PRIMARY KEY,
 	"task" VARCHAR (100) NOT NULL,
-	"task_note" VARCHAR (250),
+	"task_note" VARCHAR (250) DEFAULT '',
 	"assigned_to" VARCHAR (100) NOT NULL,
 	"created" DATE NOT NULL DEFAULT CURRENT_DATE,
   "completed" BOOLEAN DEFAULT FALSE,
 	"completed_date" DATE DEFAULT NULL
 );
+
 
 -- 3. If you want some placeholder information to start off
 --    enter the following into your SQL Query

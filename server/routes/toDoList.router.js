@@ -30,6 +30,33 @@ toDoListRouter.get('/', (req, res) => {
 
 
 // POST
+toDoListRouter.post('/', (req, res) => {
+  let newTask = req.body;
+  let sqlText = `
+    INSERT INTO "to_do_list"
+      ("task", "task_note", "assigned_to")
+      Values
+      ($1, $2, $3);
+  `;
+  let sqlValues = [
+    newTask.task,
+    newTask.taskNote,
+    newTask.assignedTo
+  ];
+
+  // Send sanitized sql inputs to the database
+  pool.query(sqlText, sqlValues)
+    .then((dbRes) => {
+      // Send "Created" status to client.js
+      res.sendStatus(201)
+    })
+    .catch((dbErr) => {
+      // Log the error sent back from SQL database
+      console.log('Error adding new task:', dbErr);
+      // Send "Internal Server Error" status to client.js
+      res.sendStatus(500);
+    })
+})
 
 
 // PUT

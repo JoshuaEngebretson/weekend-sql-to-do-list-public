@@ -60,6 +60,29 @@ toDoListRouter.post('/', (req, res) => {
 
 
 // PUT
+toDoListRouter.put('/:id', (req, res) => {
+  let idToUpdate = req.params.id;
+  let completedTask = req.body.completed;
+
+  let sqlText = `
+    UPDATE "to_do_list"
+      SET "completed"=$1, "completed_date"=CURRENT_DATE
+      WHERE "id"=$2;
+  `;
+  let sqlValues = [completedTask, idToUpdate];
+
+  pool.query(sqlText, sqlValues)
+    .then((dbRes) => {
+      // Send "Okay" status to client
+      res.sendStatus(200);
+    })
+    .catch((dbErr) => {
+      // Log that there was an issue inside of this function
+      console.log('SQL query in PUT /toDo/:id failed:', dbErr);
+      // Send "Internal Server Error" status to client
+      res.sendStatus(500);
+    })
+})
 
 
 // DELETE

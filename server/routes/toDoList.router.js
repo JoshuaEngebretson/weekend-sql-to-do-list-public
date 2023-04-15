@@ -12,7 +12,7 @@ toDoListRouter.get('/', (req, res) => {
 
   let sqlText = `
     SELECT * FROM "to_do_list"
-    ORDER BY "created";
+    ORDER BY "id";
   `;
 
   pool.query(sqlText)

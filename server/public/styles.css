@@ -1,0 +1,30 @@
+table {
+  width: 100%;
+  text-align: left;
+}
+table, th, td {
+  border: 1px solid rgb(0, 23, 174);
+  border-collapse: collapse;
+  height: 2.15em;
+}
+th, td {
+  padding: .5em;
+  min-width: 3.5em;
+}
+thead {
+  background: #f7f7f7;
+  color: #001c8e;
+}
+tbody tr:nth-child(odd){
+  background: #FCFCFC;
+}
+tbody tr:nth-child(even){
+  background: #DCDCDC;
+}
+h2{
+  color: #001c8e;
+}
+
+.completedTask {
+  background: rgb(123, 197, 123);
+}

@@ -1,5 +1,8 @@
 // Boilerplate for Pool & require pg dependency: 
 const pg = require('pg');
+pg.types.setTypeParser(1082, function(stringValue) {
+    return stringValue; // leaves off time from dates
+});
 
 // this will send Pool objects: 
 const Pool = pg.Pool;

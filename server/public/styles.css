@@ -25,6 +25,9 @@ h2{
   color: #001c8e;
 }
 
-.completedTask {
-  background: rgb(123, 197, 123);
+tbody tr:nth-child(odd).completedTask {
+  background-color: rgb(215, 241, 215);
+}
+tbody tr:nth-child(even).completedTask {
+  background-color: rgb(186, 209, 186);
 }

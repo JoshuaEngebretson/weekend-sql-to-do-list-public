@@ -5,6 +5,9 @@ function onReady() {
 
   // Get Task list and update DOM
   getAndRenderTaskList();
+
+  // Click listener for addTaskBtn
+  $('#addTaskBtn').on('click', addTask)
 }// End onReady
 
 
@@ -65,3 +68,28 @@ function getAndRenderTaskList() {
   })
 }// End getAndRenderTaskList
 
+
+function addTask(event) {
+  event.preventDefault();
+
+  if ($('#taskInput').val() != '' && 
+  $('#assignedToInput').val() != '') {
+    console.log('this will work');
+  }
+  else {// Alert the User why addTaskBtn didn't work
+    // If nothing in Enter Task but Assigned To filled in
+    if ($('#taskInput').val() == '' &&
+    $('#assignedToInput').val() != '') {
+      alert('"Enter Task" is a required field');
+    }
+    // If nothing in Assigned To but Enter Task To filled in
+    else if ($('#taskInput').val() != '' && 
+    $('#assignedToInput').val() == '') {
+      alert('"Assigned To" is a required field');
+    }
+    // Else both fields are empty
+    else {
+      alert('Both "Enter Task" AND "Assigned To" are required fields');
+    }
+  }
+}

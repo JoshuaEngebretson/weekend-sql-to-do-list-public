@@ -8,6 +8,9 @@ function onReady() {
 
   // Click listener for addTaskBtn
   $('#addTaskBtn').on('click', addTask)
+
+  // Click listener for completeTaskBtn
+  $('#viewToDoList').on('click', '.completeTaskBtn', completeTask)
 }// End onReady
 
 
@@ -143,4 +146,34 @@ function postTask(taskToSend) {
     console.log('the /toDo POST request failed with error:', error);
 
   });
+}
+
+// PUT request to Server
+//  if successful
+//    1. Will remove Complete Task button from DOM
+//        for this row
+//    2. Will adjust row color to green
+//  if unsuccessful
+//    1. Alert user that an error has occured
+function completeTask() {
+  // Grab the data-id from the row this button is in
+  let idToUpdate = $(this).parent().parent().data('id');
+
+  $.ajax({
+    method: 'PUT',
+    url: `/toDo/${idToUpdate}`,
+    data: {
+      completed: true
+    }
+  }).then(function (response) {
+
+    // Update the DOM with new taskList
+    getAndRenderTaskList();
+
+  }).catch(function (error) {
+
+    alert('There was an error completing this task, please try again later')
+    console.log('the /toDo PUT request failed with error:', error);
+
+  })
 }

@@ -32,6 +32,11 @@ function getAndRenderTaskList() {
     // Clear out the viewToDoList table body
     $('#viewToDoList').empty();
 
+    // Clear out numberTasksCompleted
+    $('#numberTasksCompleted').empty();
+
+    let numCompleted = 0;
+
     // Loop through the array and render each task
     //  onto the DOM
     for (let task of response) {
@@ -49,6 +54,7 @@ function getAndRenderTaskList() {
             </td>
           </tr>
         `)
+        numCompleted++
       }
       else {
         $('#viewToDoList').append(`
@@ -69,10 +75,15 @@ function getAndRenderTaskList() {
       }
     }
 
+    // Update numberTasksCompleted on DOM to current number
+    //  completed in database
+    $('#numberTasksCompleted').text(`${numCompleted}`)
+    
   }).catch(function(error) {
     alert('There was an error in getting the current task list')
     console.log(error);
   })
+
 }// End getAndRenderTaskList
 
 

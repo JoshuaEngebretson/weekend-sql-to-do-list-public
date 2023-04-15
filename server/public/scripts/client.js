@@ -7,10 +7,14 @@ function onReady() {
   getAndRenderTaskList();
 
   // Click listener for addTaskBtn
-  $('#addTaskBtn').on('click', addTask)
+  $('#addTaskBtn').on('click', addTask);
 
   // Click listener for completeTaskBtn
-  $('#viewToDoList').on('click', '.completeTaskBtn', completeTask)
+  $('#viewToDoList').on('click', '.completeTaskBtn', completeTask);
+
+  // Click listener for deleteTaskBtn
+  $('#viewToDoList').on('click', '.deleteTaskBtn', deleteTask);
+
 }// End onReady
 
 
@@ -148,6 +152,7 @@ function postTask(taskToSend) {
   });
 }
 
+
 // PUT request to Server
 //  if successful
 //    1. Will remove Complete Task button from DOM
@@ -176,4 +181,32 @@ function completeTask() {
     console.log('the /toDo PUT request failed with error:', error);
 
   })
+}
+
+
+// DELETE request to Server
+//  if successful
+//    1. Will remove entire task from database
+//    2. Will render updated taskList to DOM
+//  if unsuccessful
+//    1. Alert user that an error has occured
+function deleteTask() {
+    // Grab the data-id from the row this button is in
+    let idToDelete = $(this).parent().parent().data('id');
+    console.log('inside deleteTask');
+
+    $.ajax({
+      method: 'DELETE',
+      url: `/toDo/${idToDelete}`
+    }).then(function (response) {
+  
+      // Update the DOM with new taskList
+      getAndRenderTaskList();
+  
+    }).catch(function (error) {
+  
+      alert('There was an error deleting this task, please try again later')
+      console.log('the /toDo DELETE request failed with error:', error);
+  
+    })
 }

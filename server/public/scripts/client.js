@@ -72,19 +72,27 @@ function getAndRenderTaskList() {
 function addTask(event) {
   event.preventDefault();
 
-  if ($('#taskInput').val() != '' && 
-  $('#assignedToInput').val() != '') {
+  let task = $('#taskInput').val();
+  let taskNote = $('#taskNoteInput').val();
+  let assignedTo = $('#assignedToInput').val()
+
+  if (task != '' && assignedTo != '') {
     console.log('this will work');
+
+    let newTask = {
+      task: task,
+      taskNote: taskNote,
+      assignedTo: assignedTo
+    }
+    console.log(newTask);
   }
   else {// Alert the User why addTaskBtn didn't work
     // If nothing in Enter Task but Assigned To filled in
-    if ($('#taskInput').val() == '' &&
-    $('#assignedToInput').val() != '') {
+    if (task == '' && assignedTo != '') {
       alert('"Enter Task" is a required field');
     }
     // If nothing in Assigned To but Enter Task To filled in
-    else if ($('#taskInput').val() != '' && 
-    $('#assignedToInput').val() == '') {
+    else if (task != '' && assignedTo == '') {
       alert('"Assigned To" is a required field');
     }
     // Else both fields are empty

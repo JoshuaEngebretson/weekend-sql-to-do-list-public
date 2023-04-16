@@ -1,7 +1,6 @@
 $(document).ready(onReady)
 
 function onReady() {
-  console.log('JS & JQ sourced in');
 
   // Get Task list and update DOM
   getAndRenderTaskList();
@@ -53,7 +52,7 @@ function getAndRenderTaskList() {
           </tr>
         `)
         numCompleted++
-      }
+      } // End if task is completed
       else {
         $('#viewToDoList').append(`
           <tr data-id=${task.id}>
@@ -70,7 +69,7 @@ function getAndRenderTaskList() {
             </td>
           </tr>
         `)
-      }
+      }// End if task is NOT completed
     }
 
     // Update numberTasksCompleted on DOM to current number
@@ -95,12 +94,15 @@ function getAndRenderTaskList() {
 //        2. Will alert user if unsuccessful
 //            leave inputs filled in
 function addTask(event) {
+
   event.preventDefault();
 
   let task = $('#taskInput').val();
   let taskNote = $('#taskNoteInput').val();
   let assignedTo = $('#assignedToInput').val();
 
+  // Check if required fields are filled in.
+  //  If not, provide alert to the user.
   if (task != '' && assignedTo != '') {
     // Create newTask object to send to DB
     let newTask = {
@@ -127,7 +129,7 @@ function addTask(event) {
       alert('Both "Enter Task" AND "Assigned To" are required fields');
     }
   }
-}
+}// End addTask
 
 
 // POST request to Server 
@@ -138,7 +140,6 @@ function addTask(event) {
 //    1. Alert user that an error has occured
 function postTask(taskToSend) {
 
-  console.log('taskToSend:', taskToSend);
   // ajax POST of data to server
   $.ajax({
     method: 'POST',
@@ -159,7 +160,7 @@ function postTask(taskToSend) {
     console.log('the /toDo POST request failed with error:', error);
 
   });
-}
+}// End postTask
 
 
 // PUT request to Server
@@ -190,7 +191,7 @@ function completeTask() {
     console.log('the /toDo PUT request failed with error:', error);
 
   })
-}
+}// End completeTask
 
 
 // DELETE request to Server
@@ -202,8 +203,9 @@ function completeTask() {
 function deleteTask() {
   // Grab the data-id from the row this button is in
   let idToDelete = $(this).parent().parent().data('id');
-  console.log('inside deleteTask');
 
+  // Confirm user wants to delete this task, if they want to proceed
+  //  delete the task from the database and update the DOM.
   if (confirm(`Click "OK" if you're sure you want to delete this task.`)) {
     $.ajax({
       method: 'DELETE',
@@ -220,4 +222,4 @@ function deleteTask() {
   
     })
   }
-}
+}// End deleteTask

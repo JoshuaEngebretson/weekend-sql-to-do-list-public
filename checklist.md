@@ -12,10 +12,10 @@
 7. Deleting a Task should removed from front end AND database ✅
 
 ## Base DOM styling
-1. Use CSS styling to change aesthetic beyond vanilla HTML
-  * background-color of the page
-  * font family and size
-  * text color & or background color of tasks to show if completed
+1. Use CSS styling to change aesthetic beyond vanilla HTML ✅
+  * background-color of the page ✅
+  * font family and size ✅ ✅
+  * text color & or background color of tasks to show if completed ✅
 
 ## Create Database
 1. Use the name weekend-to-do-app ✅

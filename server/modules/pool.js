@@ -8,7 +8,7 @@ pg.types.setTypeParser(1082, function(stringValue) {
 const Pool = pg.Pool;
 
 // the Pool objects are connected to DB which is 
-// running at localhost:5432, named "koala_holla"
+// running at localhost:5432, named 'weekend-to-do-app'
 const pool = new Pool ({
     host: 'localhost',
     port: 5432,
@@ -16,7 +16,7 @@ const pool = new Pool ({
 })
 
 pool.on('connect', () => {
-    console.log('This is Pool, connected to your postgres DB!');
+    console.log('The Pool is connected to your postgres DB!');
 })
 
 pool.on('error', (error) => {

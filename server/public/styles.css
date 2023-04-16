@@ -10,6 +10,7 @@ table, th, td {
 th, td {
   padding: .5em;
   min-width: 3.5em;
+  /* max-width: 6em; */
 }
 thead {
   background: rgb(232, 245, 255);
@@ -42,3 +43,13 @@ body {
   background-color: rgb(155, 155, 240);
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
+
+.center {
+  display: block;
+  margin: auto;
+}
+
+.center-date {
+  text-align: center;
+}
+

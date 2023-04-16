@@ -46,11 +46,11 @@ function getAndRenderTaskList() {
             <td>${task.task}</td>
             <td>${task.task_note}</td>
             <td>${task.assigned_to}</td>
-            <td>${task.created}</td>
+            <td class="center-date">${task.created}</td>
             <td><!-- This space intentionally left blank --></td>
-            <td>${task.completed_date}</td>
+            <td class="center-date">${task.completed_date}</td>
             <td>
-              <button class="deleteTaskBtn">Delete Task</button>
+              <button class="deleteTaskBtn center">Delete Task</button>
             </td>
           </tr>
         `)
@@ -62,13 +62,13 @@ function getAndRenderTaskList() {
             <td>${task.task}</td>
             <td>${task.task_note}</td>
             <td>${task.assigned_to}</td>
-            <td>${task.created}</td>
+            <td class="center-date">${task.created}</td>
             <td>
-              <button class="completeTaskBtn">Complete Task</button>
+              <button class="completeTaskBtn center">Complete Task</button>
             </td>
             <td><!-- This space intentionally left blank --></td>
             <td>
-              <button class="deleteTaskBtn">Delete Task</button>
+              <button class="deleteTaskBtn center">Delete Task</button>
             </td>
           </tr>
         `)

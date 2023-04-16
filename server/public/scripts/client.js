@@ -19,7 +19,6 @@ function onReady() {
 
 
 function getAndRenderTaskList() {
-  console.log('inside of getAndRenderTaskList');
 
   // Reach out to server asking for the array of
   // task objects:
@@ -27,7 +26,6 @@ function getAndRenderTaskList() {
     method: 'GET',
     url: '/toDo'
   }).then(function(response) {
-    console.log('inside of then for GET /toDo');
 
     // Clear out the viewToDoList table body
     $('#viewToDoList').empty();
@@ -202,10 +200,11 @@ function completeTask() {
 //  if unsuccessful
 //    1. Alert user that an error has occured
 function deleteTask() {
-    // Grab the data-id from the row this button is in
-    let idToDelete = $(this).parent().parent().data('id');
-    console.log('inside deleteTask');
+  // Grab the data-id from the row this button is in
+  let idToDelete = $(this).parent().parent().data('id');
+  console.log('inside deleteTask');
 
+  if (confirm(`Click "OK" if you're sure you want to delete this task.`)) {
     $.ajax({
       method: 'DELETE',
       url: `/toDo/${idToDelete}`
@@ -220,4 +219,5 @@ function deleteTask() {
       console.log('the /toDo DELETE request failed with error:', error);
   
     })
+  }
 }

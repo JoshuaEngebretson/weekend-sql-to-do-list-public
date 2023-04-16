@@ -8,7 +8,6 @@ const pool = require('../modules/pool.js');
 
 // GET
 toDoListRouter.get('/', (req, res) => {
-  console.log('inside of GET /toDo');
 
   let sqlText = `
     SELECT * FROM "to_do_list"
@@ -17,21 +16,27 @@ toDoListRouter.get('/', (req, res) => {
 
   pool.query(sqlText)
     .then((dbRes) => {
+
       let taskList = dbRes.rows;
       res.send(taskList);
+
     })
     .catch((dbErr) => {
+
       // Log that there was an issue inside of this function
       console.log('SQL query in GET /toDo failed:', dbErr);
       // Send "Internal Server Error" status to client
       res.sendStatus(500);
+
     })
-})
+})// End GET
 
 
 // POST
 toDoListRouter.post('/', (req, res) => {
+
   let newTask = req.body;
+
   let sqlText = `
     INSERT INTO "to_do_list"
       ("task", "task_note", "assigned_to")
@@ -47,20 +52,25 @@ toDoListRouter.post('/', (req, res) => {
   // Send sanitized sql inputs to the database
   pool.query(sqlText, sqlValues)
     .then((dbRes) => {
+
       // Send "Created" status to client.js
       res.sendStatus(201)
+
     })
     .catch((dbErr) => {
+
       // Log the error sent back from SQL database
       console.log('Error adding new task:', dbErr);
       // Send "Internal Server Error" status to client.js
       res.sendStatus(500);
+
     })
-})
+})// End POST
 
 
 // PUT
 toDoListRouter.put('/:id', (req, res) => {
+
   let idToUpdate = req.params.id;
   let completedTask = req.body.completed;
 
@@ -73,20 +83,25 @@ toDoListRouter.put('/:id', (req, res) => {
 
   pool.query(sqlText, sqlValues)
     .then((dbRes) => {
+
       // Send "Okay" status to client
       res.sendStatus(200);
+
     })
     .catch((dbErr) => {
+
       // Log that there was an issue inside of this function
       console.log('SQL query in PUT /toDo/:id failed:', dbErr);
       // Send "Internal Server Error" status to client
       res.sendStatus(500);
+
     })
-})
+})// End PUT
 
 
 // DELETE
 toDoListRouter.delete('/:id', (req, res) => {
+
   let idToDelete = req.params.id;
 
   let sqlText = `
@@ -97,16 +112,20 @@ toDoListRouter.delete('/:id', (req, res) => {
 
   pool.query(sqlText, sqlValues)
     .then((dbRes) => {
+
       // Send "Okay" status to client
       res.sendStatus(200);
+
     })
     .catch((dbErr) => {
+
       // Log that there was an issue inside of this function
       console.log('SQL query in DELETE /toDo/:id failed:', dbErr);
       // Send "Internal Server Error" status to client
       res.sendStatus(500);
+
     })
-})
+})// End DELETE
 
 
 module.exports = toDoListRouter;

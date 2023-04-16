@@ -13,9 +13,9 @@
 
 ## Base DOM styling
 1. Use CSS styling to change aesthetic beyond vanilla HTML ✅
-  * background-color of the page ✅
-  * font family and size ✅ ✅
-  * text color & or background color of tasks to show if completed ✅
+    * background-color of the page ✅
+    * font family and size ✅ ✅
+    * text color & or background color of tasks to show if completed ✅
 
 ## Create Database
 1. Use the name weekend-to-do-app ✅
@@ -24,14 +24,14 @@
 # Stretch Goals
 Acheive these through utilizing branching
 1. feature-styling-bootstrap
-  * Add Bootstrap to the front end and style away
-    - Buttons -- make the buttons and completion buttons green and the delete red.
-    - Inputs -- make your text inputs styled in the bootstrap way
-    - Responsive -- make the app responsive to different screen sizes
-2. feature-confirm-delete
-  *In Whatever fashion you would like, create an 'are you sure: yes/no' option when deleting a task.
+    * Add Bootstrap to the front end and style away
+      - Buttons -- make the buttons and completion buttons green and the delete red.
+      - Inputs -- make your text inputs styled in the bootstrap way
+      - Responsive -- make the app responsive to different screen sizes
+2. feature-confirm-delete ✅
+    * In Whatever fashion you would like, create an 'are you sure: yes/no' option when deleting a task. ✅
 3. feature-ordering-task-query
-  *Research Query Params to have the request reverse the order of the returned todos.
-4. feature-time-completed
-  * Add the ability to record when a task was completed. Show the completed date on the frontend in a pretty format.
+    * Research Query Params to have the request reverse the order of the returned todos.
+4. feature-time-completed 👍
+    * Add the ability to record when a task was completed. Show the completed date on the frontend in a pretty format.
 

@@ -3,27 +3,29 @@ table {
   text-align: left;
 }
 table, th, td {
-  border: 1px solid rgb(0, 23, 174);
+  border: 1px solid black;
   border-collapse: collapse;
   height: 2.15em;
 }
 th, td {
   padding: .5em;
   min-width: 3.5em;
+  /* max-width: 6em; */
 }
 thead {
-  background: #f7f7f7;
-  color: #001c8e;
+  background: rgb(232, 245, 255);
+  color: brown;
+  font-size: large;
 }
 tbody tr:nth-child(odd){
-  background: #FCFCFC;
+  background: rgb(241, 210, 215);
 }
 tbody tr:nth-child(even){
-  background: #DCDCDC;
+  background: rgb(255, 242, 232);
 }
-h2{
-  color: #001c8e;
-}
+/* h2{
+  color: black;
+} */
 
 tbody tr:nth-child(odd).completedTask {
   background-color: rgb(215, 241, 215);
@@ -36,3 +38,18 @@ tbody tr:nth-child(even).completedTask {
   font-size: larger;
   font-weight: bold;
 }
+
+body {
+  background-color: rgb(155, 155, 240);
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.center {
+  display: block;
+  margin: auto;
+}
+
+.center-date {
+  text-align: center;
+}
+

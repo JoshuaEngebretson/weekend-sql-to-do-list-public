@@ -19,7 +19,6 @@ function onReady() {
 
 
 function getAndRenderTaskList() {
-  console.log('inside of getAndRenderTaskList');
 
   // Reach out to server asking for the array of
   // task objects:
@@ -27,7 +26,6 @@ function getAndRenderTaskList() {
     method: 'GET',
     url: '/toDo'
   }).then(function(response) {
-    console.log('inside of then for GET /toDo');
 
     // Clear out the viewToDoList table body
     $('#viewToDoList').empty();
@@ -46,11 +44,11 @@ function getAndRenderTaskList() {
             <td>${task.task}</td>
             <td>${task.task_note}</td>
             <td>${task.assigned_to}</td>
-            <td>${task.created}</td>
+            <td class="center-date">${task.created}</td>
             <td><!-- This space intentionally left blank --></td>
-            <td>${task.completed_date}</td>
+            <td class="center-date">${task.completed_date}</td>
             <td>
-              <button class="deleteTaskBtn">Delete Task</button>
+              <button class="deleteTaskBtn center">Delete Task</button>
             </td>
           </tr>
         `)
@@ -62,13 +60,13 @@ function getAndRenderTaskList() {
             <td>${task.task}</td>
             <td>${task.task_note}</td>
             <td>${task.assigned_to}</td>
-            <td>${task.created}</td>
+            <td class="center-date">${task.created}</td>
             <td>
-              <button class="completeTaskBtn">Complete Task</button>
+              <button class="completeTaskBtn center">Complete Task</button>
             </td>
             <td><!-- This space intentionally left blank --></td>
             <td>
-              <button class="deleteTaskBtn">Delete Task</button>
+              <button class="deleteTaskBtn center">Delete Task</button>
             </td>
           </tr>
         `)
@@ -202,10 +200,11 @@ function completeTask() {
 //  if unsuccessful
 //    1. Alert user that an error has occured
 function deleteTask() {
-    // Grab the data-id from the row this button is in
-    let idToDelete = $(this).parent().parent().data('id');
-    console.log('inside deleteTask');
+  // Grab the data-id from the row this button is in
+  let idToDelete = $(this).parent().parent().data('id');
+  console.log('inside deleteTask');
 
+  if (confirm(`Click "OK" if you're sure you want to delete this task.`)) {
     $.ajax({
       method: 'DELETE',
       url: `/toDo/${idToDelete}`
@@ -220,4 +219,5 @@ function deleteTask() {
       console.log('the /toDo DELETE request failed with error:', error);
   
     })
+  }
 }
